@@ -26,7 +26,34 @@ do
 		echo "Head count is:$countHead"
                 echo "Tail count is:$countTail"
 		break
-	fi
+
+	elif [[ $countHead -eq 20 && $countTail -eq 20 ]]
+	then
+		flipCheck1=$((RANDOM%2))
+		if [ $flipCheck1 -eq $isHead ]
+        	then
+                	countHead=$((countHead + 1))
+			winningHead=$((countHead-countTail))
+			while [ $winningHead -ne 2 ]
+			do
+                        	countHead=$((countHead + 1))
+				winningHead=$((countHead-countTail))
+			done
+        	elif [ $flipCheck1 -eq $isTail ]
+        	then
+                	countTail=$((countTail + 1))
+			winnigTail=$((countTail-countHead))
+			while [ $winningTail -ne 2 ]
+			do
+                        	countTail=$((countTail + 1))
+                        	winningTail=$((countTail-countHead))
+			done
+        	fi
+		if [[  $winningHead -eq 2 || $winningHead -eq 2 ]]
+		then
+			break
+		fi
+        fi
 done
 
 echo "Total Number of head count is:$countHead"
